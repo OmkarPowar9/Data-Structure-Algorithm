@@ -7,7 +7,8 @@
 // CASE:06:DELETION AT BEGIN
 // CASE:06:DELETION AT END
 // CASE:06:DELETION AT ANY POSTIION
-
+// CASE:07:REVERSE THE LIST
+// To DO delete alt
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -257,6 +258,27 @@ void deleteatpos()
         printf("The Node has been deleted!!!!!!\n");
     }
 }
+//Reversing of DLL but logic is not clear
+void reversedll()
+{
+    struct Node *curr = head, *nextnode;
+    if (head == NULL)
+    {
+        printf("The List can't be reversed!!!");
+        return;
+    }
+
+    while (curr != NULL)
+    {
+        nextnode = curr->prev;
+        curr->prev = curr->next;
+        curr->next = nextnode;
+        curr = curr->prev;
+    }
+    printf("The list is Now reversed!!!!");
+    if (nextnode != NULL)
+        head = nextnode->prev;
+}
 
 int main()
 {
@@ -274,6 +296,8 @@ int main()
         printf("6.Delete At Beginning\n");
         printf("7.Delete At End\n");
         printf("8.Delete At Any Position:\n");
+        printf("9.Reverse the Doubly Linked list!!\n");
+        printf("10.Exit!!!!!!!!\n");
         printf("------------------------------------\n");
 
         printf("Enter the choice:");
@@ -317,9 +341,14 @@ int main()
             deleteatpos();
             break;
 
-        default:
-            printf("NO choice Entered:");
+        case 9:
+            reversedll();
             break;
+
+        case 10:
+        default:
+            printf("You quit from Doubley Linked list!!!!!!");
+            exit(1);
         }
     }
 
